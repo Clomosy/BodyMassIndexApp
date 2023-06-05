@@ -19,7 +19,7 @@ var
   begin
     if (heightEdt.text ='') or (kgEdt.Text='') then
     begin
-         ShowMessage('Lütfen Kilo ve Boy Değerlerini Giriniz.');
+         ShowMessage('Please Enter Weight and Height Values.');
          exit;
     end;
    
@@ -27,7 +27,7 @@ var
     sonuc := StrToFloat(kgEdt.Text)/Sqr((StrToFloat(heightEdt.text))/100);
     if sonuc < (18.5) then
     begin
-      ShowMessage('Zayıf');
+      ShowMessage('Weak');
       case genderState of
         1:
         begin
@@ -69,7 +69,7 @@ var
     end
     else if sonuc < 29.9 then
     begin
-      ShowMessage('Fazla Kilolu');
+      ShowMessage('Overweight');
       case genderState of
         1:
         begin
@@ -99,7 +99,7 @@ var
           "BackgroundColor":"null",
           "MarginTop" : 50,
           "ImgUrl":"https://clomosy.com/illustration/obeseman.png", "ImgFit":"yes"}');
-          ShowMessage('Obez');
+          ShowMessage('Obese');
         
         end;
         2:
@@ -109,7 +109,7 @@ var
           "MarginTop" : 50,
           "ImgUrl":"https://clomosy.com/illustration/obesewoman.png", "ImgFit":"yes"}');
           
-          ShowMessage('Obez');
+          ShowMessage('Obese');
         end;
       end;
     end
@@ -124,7 +124,7 @@ var
           "MarginTop" : 50,
           "ImgUrl":"https://clomosy.com/illustration/obeseman2.png", "ImgFit":"yes"}');
           
-          ShowMessage('Obez');
+          ShowMessage('Obese');
         
         end;
         2:
@@ -134,7 +134,7 @@ var
           "MarginTop" : 50,
           "ImgUrl":"https://clomosy.com/illustration/obesewoman2.png", "ImgFit":"yes"}');
           
-          ShowMessage('Obez');
+          ShowMessage('Obese');
         end;
       end;
     end;
@@ -241,7 +241,7 @@ var
     heightLyt.Margins.Right := 20;
     heightLyt.Margins.Bottom := 20;
     
-    heightLbl := MyForm.AddNewProLabel(heightLyt,'heightLbl','Boy :');
+    heightLbl := MyForm.AddNewProLabel(heightLyt,'heightLbl','Length :');
     clComponent.SetupComponent(heightLbl,'{"Align" : "Left","Width" :60, "Height":30,"TextColor":"#ffffff",
     "TextVerticalAlign":"center",
     "TextHorizontalAlign":"left",
@@ -274,7 +274,7 @@ var
     genderLyt.Margins.Right := 20;
     genderLyt.Margins.Bottom := 20;
     
-    genderLbl := MyForm.AddNewProLabel(genderLyt,'genderLbl','Cinsiyet :');
+    genderLbl := MyForm.AddNewProLabel(genderLyt,'genderLbl','Gender :');
     clComponent.SetupComponent(genderLbl,'{"Align" : "Left","Width" :60, "Height":30,"TextColor":"#ffffff",
     "TextVerticalAlign":"center",
     "TextHorizontalAlign":"left",
