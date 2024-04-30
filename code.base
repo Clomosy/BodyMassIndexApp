@@ -2,22 +2,17 @@ var
   MyForm:TCLForm;
   formLayout:TclLayout;
   mainPnl:TclProPanel;
-  
   mainPnlHeight,mainPnlWidth:integer;
-  
   kgLyt,heightLyt,genderLyt:TclLayout;
   kgEdt,heightEdt:TclProEdit;
   kgLbl,heightLbl,outputLbl,genderLbl,titleLbl:TclProLabel;
-
   maleBtn,femaleBtn,checkBtn, outputImg:TClProImage;
-  
   sonuc:double;
-  
   genderState:integer;
   
-  Procedure CheckBtnOnClick;
+  procedure CheckBtnOnClick;
   begin
-    if (heightEdt.text ='') or (kgEdt.Text='') then
+    if (heightEdt.text = '')  or (kgEdt.Text = '') then
     begin
          ShowMessage('Lütfen Kilo ve Boy Değerlerini Giriniz.');
          exit;
@@ -25,7 +20,7 @@ var
    
     
     sonuc := StrToFloat(kgEdt.Text)/Sqr((StrToFloat(heightEdt.text))/100);
-    if sonuc < (18.5) then
+    if sonuc < 18.5 then
     begin
       ShowMessage('Zayıf');
       case genderState of
@@ -35,7 +30,6 @@ var
           "BackgroundColor":"null",
           "MarginTop" : 50,
           "ImgUrl":"https://clomosy.com/illustration/underweightman.png", "ImgFit":"yes"}');
-        
         end;
         2:
         begin
@@ -45,7 +39,7 @@ var
           "ImgUrl":"https://clomosy.com/illustration/underweightwoman.png", "ImgFit":"yes"}');
         end;
       end;
-    end
+    end;
     else if sonuc < 24.9 then
     begin
       ShowMessage('Normal');
@@ -56,7 +50,6 @@ var
           "BackgroundColor":"null",
           "MarginTop" : 50,
           "ImgUrl":"https://clomosy.com/illustration/normalman.png", "ImgFit":"yes"}');
-        
         end;
         2:
         begin
@@ -66,7 +59,7 @@ var
           "ImgUrl":"https://clomosy.com/illustration/normalwoman.png", "ImgFit":"yes"}');
         end;
       end;
-    end
+    end;
     else if sonuc < 29.9 then
     begin
       ShowMessage('Fazla Kilolu');
@@ -77,7 +70,6 @@ var
           "BackgroundColor":"null",
           "MarginTop" : 50,
           "ImgUrl":"https://clomosy.com/illustration/overweightman.png", "ImgFit":"yes"}');
-        
         end;
         2:
         begin
@@ -87,11 +79,9 @@ var
           "ImgUrl":"https://clomosy.com/illustration/overweightwoman.png", "ImgFit":"yes"}');
         end;
       end;
-    end
-    else 
-    if sonuc < 39.9 then
+    end;
+    else if sonuc < 39.9 then
     begin
-      
       case genderState of
         1:
         begin
@@ -100,7 +90,6 @@ var
           "MarginTop" : 50,
           "ImgUrl":"https://clomosy.com/illustration/obeseman.png", "ImgFit":"yes"}');
           ShowMessage('Obez');
-        
         end;
         2:
         begin
@@ -108,14 +97,13 @@ var
           "BackgroundColor":"null",
           "MarginTop" : 50,
           "ImgUrl":"https://clomosy.com/illustration/obesewoman.png", "ImgFit":"yes"}');
-          
           ShowMessage('Obez');
         end;
       end;
-    end
-    else 
+    end;
+    
+    else
     begin
-      
       case genderState of
         1:
         begin
@@ -123,9 +111,7 @@ var
           "BackgroundColor":"null",
           "MarginTop" : 50,
           "ImgUrl":"https://clomosy.com/illustration/obeseman2.png", "ImgFit":"yes"}');
-          
           ShowMessage('Obez');
-        
         end;
         2:
         begin
@@ -133,15 +119,12 @@ var
           "BackgroundColor":"null",
           "MarginTop" : 50,
           "ImgUrl":"https://clomosy.com/illustration/obesewoman2.png", "ImgFit":"yes"}');
-          
           ShowMessage('Obez');
         end;
       end;
     end;
-    
-    
   end;
-  Procedure MaleBtnOnClick;
+  procedure MaleBtnOnClick;
   begin
     genderState := 1;
     clComponent.SetupComponent(maleBtn,'{"Align" : "Left","Width" :50, "Height":300,
@@ -166,7 +149,7 @@ var
     "MarginLeft":30,
     "ImgUrl":"https://clomosy.com/educa/female.png", "ImgFit":"yes"}');
   end;
-  Procedure FemaleBtnOnClick;
+  procedure FemaleBtnOnClick;
   begin
     genderState := 2;
     clComponent.SetupComponent(maleBtn,'{"Align" : "Left","Width" :50, "Height":300,
@@ -192,14 +175,14 @@ var
     "ImgUrl":"https://clomosy.com/educa/female.png", "ImgFit":"yes"}');
   end;
   
-  Procedure SetupContents;
+  procedure SetupContents;
   begin
     genderState := 1;
     
   
-    {           KG Edit Start                }
+     //          KG Edit Start                
     kgLyt := MyForm.AddNewLayout(mainPnl,'kgLyt');
-    kgLyt.Align:=alMostTop;
+    kgLyt.Align := alMostTop;
     kgLyt.Height := 35;
     kgLyt.Width := 200;
     kgLyt.Margins.Top := 20;
@@ -229,9 +212,9 @@ var
     kgEdt.TextSettings.FontColor := clAlphaColor.clHexToColor('#ffffff');
     
     kgEdt.clTypeOfField := taFloat;
-    {           KG Edit End                }
+    //        KG Edit End                
     
-    {           HEIGHT Edit Start                }
+    //           HEIGHT Edit Start                
     heightLyt := MyForm.AddNewLayout(mainPnl,'heightLyt');
     heightLyt.Align:=alMostTop;
     heightLyt.Height := 35;
@@ -249,7 +232,7 @@ var
     "TextSize":12,"TextBold":"yes"}');
     
     
-    heightEdt := MyForm.AddNewProEdit(heightLyt,'heightEdt','1.80');
+    heightEdt := MyForm.AddNewProEdit(heightLyt,'heightEdt','180');
     clComponent.SetupComponent(heightEdt,'{"Align" : "Client",
     "Width" :129,
     "Height":33,
@@ -263,7 +246,7 @@ var
     HeightEdt.TextSettings.FontColor := clAlphaColor.clHexToColor('#ffffff');
     
     HeightEdt.clTypeOfField := taFloat;
-    {           HEIGHT Edit End                }
+    //          HEIGHT Edit End                
     
     genderLyt := MyForm.AddNewLayout(mainPnl,'genderLyt');
     genderLyt.Align:=alMostTop;
@@ -320,7 +303,7 @@ var
     "ImgUrl":"https://clomosy.com/illustration/normalman.png", "ImgFit":"yes"}');
     
   end;
-  Procedure SetupFormLayout;
+  procedure SetupFormLayout;
   begin
     formLayout := MyForm.AddNewLayout(MyForm,'formLayout');
     formLayout.Align:=alContents;
@@ -328,7 +311,7 @@ var
     mainPnlHeight := (formLayout.Height)/2;
     mainPnlWidth := (formLayout.Width)/2;
   end;
-  Procedure SetupPanel;
+  procedure SetupPanel;
   begin
     mainPnl:=MyForm.AddNewProPanel(MyForm,'mainPnl');
     clComponent.SetupComponent(mainPnl,'{"Align" : "Client","Width" :'+IntToStr(mainPnlWidth)+',
